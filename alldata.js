@@ -5,6 +5,7 @@ const AllData = () => {
       <div className="row">
         <div className="col">
           <h1>All Data</h1>
+          { JSON.stringify(ctx) }
         </div>
       </div>
     </div>

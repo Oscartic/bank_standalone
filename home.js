@@ -1,4 +1,7 @@
 const Home= () => {
+
+  const ctx = React.useContext(UserContext);
+
   return (
     <div className="container-fluid">
       <div className="row">
