@@ -21,5 +21,4 @@ const Card = ({header, title, text, body, status, bgcolor, txtcolor}) => {
             </div>
         </div>
     )
-  }
-  
+}

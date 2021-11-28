@@ -15,6 +15,7 @@ const AllData = () => {
               <th scope="col">Email</th>
               <th scope="col">Password</th>
               <th scope="col">Balance</th>
+              <th scope="col">Status</th>
             </tr>
             </thead>
             <tbody>
@@ -22,9 +23,10 @@ const AllData = () => {
                 ctx.users.map(u => (
                   <tr>
                     <th>{u.name}</th>
-                    <th>{u.email}</th>
-                    <th><code>{u.password}</code></th>
-                    <th>{u.balance}</th>
+                    <td>{u.email}</td>
+                    <td><code>{u.password}</code></td>
+                    <td>{u.balance}</td>
+                    <td><span className="status-session">{JSON.stringify(u.session)}</span></td>
                   </tr>
                 ))
               }
