@@ -20,8 +20,8 @@ const AllData = () => {
             </thead>
             <tbody>
               {
-                ctx.users.map(u => (
-                  <tr>
+                ctx.users.map((u, key) => (
+                  <tr key={`${key}-${u.name}`}>
                     <th>{u.name}</th>
                     <td>{u.email}</td>
                     <td><code>{u.password}</code></td>

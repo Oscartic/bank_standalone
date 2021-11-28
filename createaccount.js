@@ -23,7 +23,7 @@ const CreateAccount= () => {
         if(!validate(name, 'name')) return;
         if(!validate(email, 'email')) return;
         if(!validate(password, 'password')) return;
-        context.users.push({name, email, password, balance:100});
+        context.users.push({name, email, password, balance:100, session:false});
         setShow(false);
     }
 
@@ -73,12 +73,12 @@ const CreateAccount= () => {
                         value={password}
                         onChange={e => setPassword(e.currentTarget.value)}
                     /><br />
-                    <button type="submit" onClick={(e) => handleCreate(e)}>Create Account</button>
+                    <button type="submit" className="btn btn-outline-danger" onClick={(e) => handleCreate(e)}>Create Account</button>
                 </>
                 ) : (
                     <>
                         <h5>Success</h5>
-                        <button type="submit" onClick={clearForm}>Create Account</button>
+                        <button type="submit" className="btn btn-outline-danger" onClick={clearForm}>Create Account</button>
                     </>)
                 }
             />

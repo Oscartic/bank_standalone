@@ -6,7 +6,15 @@ const Spa = () => {
   return (
     <HashRouter>
       <UserContext.Provider 
-        value={{ onSession: false, users: [{name: 'Oscar', email: 'oscartic@mail.com', password: 'secret', balance:100, session: false}]}}
+        value={
+          { 
+            onSession: false, 
+            users: [
+              {name: 'Caro', email: 'caro@mit.com', password: 'secret', balance:100, session: false},
+            {name: 'Oscar', email: 'oscar@mail.com', password: 'secret', balance:100, session: false}
+            ]
+          }
+        }
         >
         <NavBar 
           openSession={openSession} 

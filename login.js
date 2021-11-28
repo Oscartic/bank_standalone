@@ -20,8 +20,6 @@ const Login = ({setOpenSession, setDataCurrentSession}) => {
     if(!validate(email, 'email')) return;
     if(!validate(password, 'password')) return;
     await setSession({email, password});
-    console.log(context.users)
-    await setOpenSession(true);
 }
 
 const setSession = async ({email, password}) => {
@@ -31,9 +29,10 @@ const setSession = async ({email, password}) => {
   //     context.onSession = true;
   // }});
   const user = await context.users.filter(e => e.email === email && e.password === password);
+  if(user.length <= 0) return alert("No se reconoce Usuario o Contraseña");
   setDataCurrentSession(user[0])
+  setOpenSession(true);
   const result = user.length > 0 ? true : false;
-
   return result; 
 }
 
@@ -65,7 +64,7 @@ const setSession = async ({email, password}) => {
             value={password}
           />
         </div>
-          <button type="submit" className="btn btn-primary" onClick={handleLogin}>Submit</button>
+          <button type="submit" className="btn btn-outline-danger" onClick={handleLogin}>Ingresar</button>
         </form>
       </div>
     </div>
