@@ -27,7 +27,7 @@ const Spa = () => {
             <Route path="/CreateAccount/" element={<CreateAccount />} />
             <Route path="/login/" element={<Login openSession={openSession} dataSession={dataSession} setOpenSession={setOpenSession} setDataCurrentSession={setDataCurrentSession} />} />
             <Route path="/deposit/" element={<Deposit dataSession={dataSession}  setDataCurrentSession={setDataCurrentSession} />} />
-            <Route path="/withdraw/" element={<Withdraw dataSession={dataSession} />} />
+            <Route path="/withdraw/" element={<Withdraw dataSession={dataSession} setDataCurrentSession={setDataCurrentSession} />} />
             <Route path="/balance/" element={<Balance dataSession={dataSession} />} />
             <Route path="/alldata/" element={<AllData />} />
           </Routes>

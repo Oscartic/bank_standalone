@@ -38,7 +38,8 @@ const CreateAccount= () => {
     <div className="container-fluid">
     <div className="row">
         <div className="col">
-        <h1>Deposit</h1>
+        <div style={{ maxWidth:'450px', margin: 'auto', padding:'1em'}}>
+        <h1>Create Account</h1>
         <Card
             bgcolor="primary"
             txtcolor="white"
@@ -82,6 +83,7 @@ const CreateAccount= () => {
                     </>)
                 }
             />
+            </div>
         </div>
         </div>
     </div>
