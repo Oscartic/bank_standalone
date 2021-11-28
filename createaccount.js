@@ -12,7 +12,12 @@ const CreateAccount= () => {
         if(!field) {
             setStatus(`Error: ${label}`);
             setTimeout(() => setStatus(''), 3000);
-            return false;
+            return alert(`The field ${label} cannot be empty!`);
+        }
+        if(label === 'password'){
+            if(field.length < 8){
+                return alert(`The field ${label} must be at least 8 characters long`);
+            }
         }
         return true;
     }
@@ -33,6 +38,11 @@ const CreateAccount= () => {
         setPassword('');
         setShow(true);
     }
+
+    const enableField = () => {
+        if(name === '' && email === '' && password === '') return true;
+        return false;
+      }
 
     return(
     <div className="container-fluid">
@@ -58,7 +68,7 @@ const CreateAccount= () => {
                     /><br />
                     Email address:<br />
                     <input 
-                        type="input"
+                        type="email"
                         className="form-control"
                         id="email"
                         placeholder="Enter email"
@@ -74,7 +84,14 @@ const CreateAccount= () => {
                         value={password}
                         onChange={e => setPassword(e.currentTarget.value)}
                     /><br />
-                    <button type="submit" className="btn btn-outline-danger" onClick={(e) => handleCreate(e)}>Create Account</button>
+                    <button 
+                        type="submit" 
+                        className="btn btn-outline-danger" 
+                        onClick={(e) => handleCreate(e)}
+                        disabled={enableField()}
+                    >
+                        Create Account
+                    </button>
                 </>
                 ) : (
                     <>
