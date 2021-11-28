@@ -8,11 +8,16 @@ const Spa = () => {
       <UserContext.Provider 
         value={{ onSession: false, users: [{name: 'Oscar', email: 'oscartic@mail.com', password: 'secret', balance:100, session: false}]}}
         >
-        <NavBar openSession={openSession} dataSession={dataSession} />
+        <NavBar 
+          openSession={openSession} 
+          dataSession={dataSession} 
+          setOpenSession={setOpenSession}
+          setDataCurrentSession={setDataCurrentSession} 
+        />
           <Routes>        
             <Route path="/" exact element={<Home />} />
             <Route path="/CreateAccount/" element={<CreateAccount />} />
-            <Route path="/login/" element={<Login setOpenSession={setOpenSession} setDataCurrentSession={setDataCurrentSession} />} />
+            <Route path="/login/" element={<Login openSession={openSession} dataSession={dataSession} setOpenSession={setOpenSession} setDataCurrentSession={setDataCurrentSession} />} />
             <Route path="/deposit/" element={<Deposit />} />
             <Route path="/withdraw/" element={<Withdraw />} />
             <Route path="/balance/" element={<Balance />} />

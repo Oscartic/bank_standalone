@@ -1,4 +1,4 @@
-const NavBar= ({openSession, dataSession}) => {
+const NavBar= ({openSession, dataSession, setOpenSession, setDataCurrentSession}) => {
 
   const context = React.useContext(UserContext);
 
@@ -18,6 +18,11 @@ const NavBar= ({openSession, dataSession}) => {
     );
   }
 
+  const closeSession = () => {
+    setOpenSession(false);
+    setDataCurrentSession({});    
+  }
+
   return(
     <>
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -31,9 +36,12 @@ const NavBar= ({openSession, dataSession}) => {
             <li className="nav-item">
               <a className="nav-link active" aria-current="page" href="#/CreateAccount/">Create Account</a>
             </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#/login/">Login</a>
-            </li>
+            { !openSession && (
+              <li className="nav-item">
+                <a className="nav-link" href="#/login/">Login</a>
+              </li>
+              )
+            }
             { openSession && (
               <>
                 <li className="nav-item">
@@ -53,7 +61,18 @@ const NavBar= ({openSession, dataSession}) => {
           </ul>
         </div>
         <div className="d-flex" style={{color: '#FFF'}}>
-          <span>{dataSession.email}</span>
+          { openSession && (
+            <div className="dropdown">
+              <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <strong>{dataSession.email}</strong>
+              </button>
+              <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a className="dropdown-item" href="#/balance/">Tu cuenta {dataSession.name}</a></li>
+                <li><a className="dropdown-item" href="#" onClick={() => closeSession()}>Salir</a></li>
+              </ul>
+            </div> 
+            )
+          }
         </div>
       </div>
     </nav>
