@@ -11,7 +11,8 @@ const Spa = () => {
             onSession: false, 
             users: [
               {name: 'Caro', email: 'caro@mit.com', password: 'secret', balance:100, session: false},
-            {name: 'Oscar', email: 'oscar@mail.com', password: 'secret', balance:100, session: false}
+              {name: 'Oscar', email: 'oscar@mail.com', password: 'secret', balance:100, session: false},
+              {name: 'Juan', email: 'juan@mail.com', password: 'secret2', balance:100, session: false},
             ]
           }
         }
