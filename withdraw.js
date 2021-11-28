@@ -15,8 +15,8 @@ const Withdraw= ({dataSession,  setDataCurrentSession}) => {
         user.balance = withdrawValue;
         console.log(user.balance);
       }
-      console.log(context.users)
     });
+    setWithdraw(0);
   }
 
   const enableField = () => {

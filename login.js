@@ -1,7 +1,8 @@
-const Login = ({setOpenSession, setDataCurrentSession}) => {
+const Login = ({openSession, dataSession, setOpenSession, setDataCurrentSession}) => {
 
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [status, setStatus] = React.useState('');
 
   const context = React.useContext(UserContext);
   
@@ -9,7 +10,7 @@ const Login = ({setOpenSession, setDataCurrentSession}) => {
     if(!field) {
         setStatus(`Error: ${label}`);
         setTimeout(() => setStatus(''), 3000);
-        return false;
+        return alert(`The field ${label} cannot be empty!`);;
     }
     return true;  
   }
@@ -29,7 +30,7 @@ const setSession = async ({email, password}) => {
   //     context.onSession = true;
   // }});
   const user = await context.users.filter(e => e.email === email && e.password === password);
-  if(user.length <= 0) return alert("No se reconoce Usuario o Contraseña");
+  if(user.length <= 0) return alert("The user with this email and password combination cannot be found!");
   setDataCurrentSession(user[0])
   setOpenSession(true);
   const result = user.length > 0 ? true : false;
@@ -41,32 +42,43 @@ const setSession = async ({email, password}) => {
     <div className="row">
       <div className="col">
         <div style={{ maxWidth:'450px', margin: 'auto', padding:'1em'}}>
-          <h1>Login</h1>
-          <form>
-          <div className="mb-3">
-            <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-            <input 
-              type="email" 
-              className="form-control" 
-              id="exampleInputEmail1" 
-              aria-describedby="emailHelp" 
-              onChange={(e) => setEmail(e.target.value)} 
-              value={email}
-            />
-            <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
-          </div>
-          <div className="mb-3">
-            <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-            <input 
-              type="password" 
-              className="form-control" 
-              id="exampleInputPassword1" 
-              onChange={(e) => setPassword(e.target.value)} 
-              value={password}
-            />
-          </div>
-            <button type="submit" className="btn btn-outline-danger" onClick={handleLogin}>Ingresar</button>
-          </form>
+          { !openSession ? (
+            <>
+              <h1>Login</h1>
+              <form>
+                <div className="mb-3">
+                  <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
+                  <input 
+                    type="email" 
+                    className="form-control" 
+                    id="exampleInputEmail1" 
+                    aria-describedby="emailHelp" 
+                    onChange={(e) => setEmail(e.target.value)} 
+                    value={email}
+                  />
+                  <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
+                  <input 
+                    type="password" 
+                    className="form-control" 
+                    id="exampleInputPassword1" 
+                    onChange={(e) => setPassword(e.target.value)} 
+                    value={password}
+                  />
+                </div>
+                  <button type="submit" className="btn btn-outline-danger" onClick={handleLogin}>Ingresar</button>
+              </form>
+            </>
+          ) : (
+            <>
+              <h1>Welcome {dataSession.name}!</h1>
+              <Balance dataSession={dataSession} />
+            </>
+          ) }
+          
+      
       </div>
     </div>
   </div>
