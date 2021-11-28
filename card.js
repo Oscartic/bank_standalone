@@ -7,7 +7,7 @@ const Card = ({header, title, text, body, status, bgcolor, txtcolor}) => {
     }
 
     return (
-        <div className="card" style={{width: "18rem"}}>
+        <div className="card" style={{maxWidth: "600px"}}>
             <div className="card-header">
                 {header}
             </div>
